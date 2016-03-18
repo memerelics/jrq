@@ -10,14 +10,14 @@ Gem::Specification.new do |spec|
   spec.email         = ['hash@hzl.jp']
 
   spec.summary       = 'jq for Rubyists'
-  spec.description   = 'CLI json processor for Rubyists. jrq enable you to without studying new syntax.'
+  spec.description   = 'CLI json processor for Rubyists. jrq enable you to filter/map/reduce json without studying new syntax.'
   spec.homepage      = 'https://github.com/memerelics/jrq'
   spec.license       = 'MIT'
 
   # Prevent pushing this gem to RubyGems.org by setting 'allowed_push_host', or
   # delete this section to allow pushing this gem to any host.
   if spec.respond_to?(:metadata)
-    spec.metadata['allowed_push_host'] = "TODO: Set to 'http://mygemserver.com'"
+    spec.metadata['allowed_push_host'] = 'https://rubygems.org'
   else
     raise 'RubyGems 2.0 or newer is required to protect against public gem pushes.'
   end
