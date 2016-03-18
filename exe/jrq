@@ -1,10 +1,13 @@
 #!/usr/bin/env ruby
 
-require "jrq"
+require 'jrq'
 
 require 'json'
+require 'hashie'
 
 _ = JSON.load(STDIN.read)
+_ = Hashie::Mash.new(_)
+
 if ARGV.length.zero?
   puts JSON.pretty_generate(_)
 else
