@@ -1,3 +1,12 @@
 #!/usr/bin/env ruby
 
 require "jrq"
+
+require 'json'
+
+_ = JSON.load(STDIN.read)
+if ARGV.length.zero?
+  puts JSON.pretty_generate(_)
+else
+  puts JSON.pretty_generate(eval(ARGV.first))
+end
