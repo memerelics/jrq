@@ -4,12 +4,13 @@ require 'jrq'
 
 require 'json'
 require 'hashie'
+require 'awesome_print'
 
 _ = JSON.load(STDIN.read)
 _ = Hashie::Mash.new(_)
 
 if ARGV.length.zero?
-  puts JSON.pretty_generate(_)
+  ap JSON.pretty_generate(_)
 else
-  puts JSON.pretty_generate(eval(ARGV.first))
+  ap eval(ARGV.first)
 end
