@@ -45,7 +45,6 @@ or
 ### Plan
 
 - color
-- raw
 - launch REPL when STDIN isn't given
   - jrq foo.json => also launch REPL
 - (maybe) _ -> j ?
