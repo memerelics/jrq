@@ -24,7 +24,11 @@ def display(o, options)
 end
 
 options = OpenStruct.new
-display(_, options) and exit 0 if ARGV.length.zero?
+
+if ARGV.length.zero?
+  display(_, options)
+  exit 0
+end
 
 oparser = OptionParser.new do |opts|
   opts.on('-r', '--raw', 'display output without quotations') do |raw|
@@ -33,4 +37,4 @@ oparser = OptionParser.new do |opts|
 end
 args = oparser.parse!(ARGV)
 
-display(eval(args.first), options) # first かどうかがわからん, と
+display(eval(args.first), options)
