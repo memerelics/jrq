@@ -2,7 +2,6 @@ require "jrq/version"
 
 require 'json'
 require 'hashie'
-require 'awesome_print'
 
 module Jrq
 
@@ -10,8 +9,7 @@ module Jrq
 
     def run(args, opts)
       _ = JSON.load(stdin)
-      _ = Hashie::Mash.new(_)
-
+      _ = Hashie::Mash.new(_) # is_a Hash
       if args.length.zero?
         display(_, opts)
       else
@@ -24,14 +22,16 @@ module Jrq
     end
 
     def display(o, options)
-      if o.is_a? Hash
-        puts JSON.pretty_generate(o)
-      else
-        if options.raw
-          puts o
+      if options.raw
+        if o.is_a?(Hash)
+          puts JSON.pretty_generate(o)
+        elsif o.is_a?(Array) && o.any?{|ob| ob.is_a?(Hash) }
+          puts JSON.pretty_generate(o)
         else
-          ap o
+          puts o
         end
+      else
+        puts JSON.pretty_generate(o) rescue puts o
       end
     end
 
