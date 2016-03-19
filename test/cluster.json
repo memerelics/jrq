@@ -1,0 +1,17 @@
+{
+  "Status": {
+    "Timeline": {
+      "ReadyDateTime": 1458381298.552,
+      "CreationDateTime": 1458381023.864,
+      "EndDateTime": 1458406899.37
+    },
+    "State": "TERMINATED",
+    "StateChangeReason": {
+      "Message": "Terminated by user request",
+      "Code": "USER_REQUEST"
+    }
+  },
+  "Hours": 192,
+  "Id": "j-XXXXXXXXXXXXX",
+  "Name": "TestCluster"
+}

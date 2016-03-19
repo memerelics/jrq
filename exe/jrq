@@ -12,4 +12,4 @@ oparser = OptionParser.new do |opts|
 end
 args = oparser.parse!(ARGV)
 
-Jrq.run(args, options)
+Jrq::Cli.new.run(args, options)

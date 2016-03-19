@@ -6,28 +6,35 @@ require 'awesome_print'
 
 module Jrq
 
-  def self.run(args, opts)
-    _ = JSON.load(STDIN.read)
-    _ = Hashie::Mash.new(_)
+  class Cli
 
-    if ARGV.length.zero?
-      display(_, opts)
-    else
-      display(eval(args.first), opts)
-    end
+    def run(args, opts)
+      _ = JSON.load(stdin)
+      _ = Hashie::Mash.new(_)
 
-  end
-
-  def self.display(o, options)
-    if o.is_a? Hash
-      puts JSON.pretty_generate(o)
-    else
-      if options.raw
-        puts o
+      if args.length.zero?
+        display(_, opts)
       else
-        ap o
+        display(eval(args.first), opts)
       end
     end
+
+    def stdin
+      STDIN.read
+    end
+
+    def display(o, options)
+      if o.is_a? Hash
+        puts JSON.pretty_generate(o)
+      else
+        if options.raw
+          puts o
+        else
+          ap o
+        end
+      end
+    end
+
   end
 
 end
