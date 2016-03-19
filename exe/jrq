@@ -1,35 +1,10 @@
 #!/usr/bin/env ruby
 
 require 'jrq'
-
-require 'json'
 require 'optparse'
 require 'ostruct'
-require 'hashie'
-require 'awesome_print'
-
-_ = JSON.load(STDIN.read)
-_ = Hashie::Mash.new(_)
-
-def display(o, options)
-  if o.is_a? Hash
-    puts JSON.pretty_generate(o)
-  else
-    if options.raw
-      puts o
-    else
-      ap o
-    end
-  end
-end
 
 options = OpenStruct.new
-
-if ARGV.length.zero?
-  display(_, options)
-  exit 0
-end
-
 oparser = OptionParser.new do |opts|
   opts.on('-r', '--raw', 'display output without quotations') do |raw|
     options.raw = raw
@@ -37,4 +12,4 @@ oparser = OptionParser.new do |opts|
 end
 args = oparser.parse!(ARGV)
 
-display(eval(args.first), options)
+Jrq.run(args, options)
