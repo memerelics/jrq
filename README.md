@@ -18,6 +18,11 @@ Or install it yourself as:
 
 ## Usage
 
+- sample JSON data
+  - AWS ip-ranges.json
+  - CloudFormation Template
+  - ECS Task Definition
+  - JSON Schema / Swagger
 
 ## Development
 
@@ -37,6 +42,13 @@ or
 
     $ gem push jrq-x.y.z.gem
 
+### Plan
+
+- color
+- raw
+- launch REPL when STDIN isn't given
+  - jrq foo.json => also launch REPL
+- (maybe) _ -> j ?
 
 ## Contributing
 
