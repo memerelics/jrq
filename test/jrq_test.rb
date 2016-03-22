@@ -52,4 +52,33 @@ Name
     EOL
     assert_output(output) { @jrq.run(['_.keys'], opts) }
   end
+
+  # $ curl -s http://petstore-demo-endpoint.execute-api.com/petstore/pets | jrq '_.map(&:price)'
+  def test_input
+    @input = <<-EOL
+[
+  {
+    "id": 1,
+    "type": "dog",
+    "price": 249.99
+  },
+  {
+    "id": 2,
+    "type": "cat",
+    "price": 124.99
+  },
+  {
+    "id": 3,
+    "type": "fish",
+    "price": 0.99
+  }
+]
+    EOL
+    def @jrq.stdin; @input end
+    assert_output(@input)   { @jrq.run(['_'], opts) }
+    assert_output('Array') { @jrq.run(['_.class'], opts) }
+    # assert_output("#{249.99 + 124.99 + 0.99}") { @jrq.run(['_.map(&:price).reduce(&:+)'], opts) }
+  end
+
+
 end
