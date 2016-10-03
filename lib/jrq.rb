@@ -9,7 +9,10 @@ module Jrq
 
     def run(args, opts)
       _ = JSON.load(stdin)
-      _ = Hashie::Mash.new(_) # is_a Hash
+      _ = case _
+          when Hash  then Hashie::Mash.new(_)
+          when Array then _.map{|obj| Hashie::Mash.new(obj) }
+          end
       if args.length.zero?
         display(_, opts)
       else
